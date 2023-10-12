@@ -21,6 +21,11 @@ let slide = pptx.addSlide({masterName: "TEST"})
  Для этого, необходимо ввести дополнительную переменную, которая будет хранить высоту текущей строки. Это нужно для переменной **emuTabCurrH**, которая для нового слайда будет равна в начале нулю, а затем нужно будет прибавить высоту текущей строки.
  Ниже исправленный фрагмент части функции **getSlidesForTableRows**:
 ```js
+function getSlidesForTableRows(tableRows, tableProps, presLayout, masterSlide) {
+...
+// Максимальная высота строки таблицы
+ var maxCurTableRowHeight = 0;
+...
  while (!isDone) {
             var srcCell = rowCellLines[currCellIdx];
             var tgtCell = currTableRow[currCellIdx]; // NOTE: may be redefined below (a new row may be created, thus changing this value)
@@ -96,4 +101,5 @@ let slide = pptx.addSlide({masterName: "TEST"})
             maxCurTableRowHeight = 0;
             newTableRowSlide.rows.push(currTableRow);
         }
+...
 ```
