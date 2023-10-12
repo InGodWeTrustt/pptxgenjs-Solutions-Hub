@@ -15,4 +15,6 @@ pptx.defineSlideMaster({
 
 let slide = pptx.addSlide({masterName: "TEST"})
 ```
+
+## Проблема 2. 
  
