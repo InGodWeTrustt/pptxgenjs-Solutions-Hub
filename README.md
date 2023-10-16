@@ -104,3 +104,4 @@ function getSlidesForTableRows(tableRows, tableProps, presLayout, masterSlide) {
         }
 ...
 ```
+где три точки(...) - неизменяемый код
