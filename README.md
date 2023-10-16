@@ -21,7 +21,6 @@ let slide = pptx.addSlide({masterName: "TEST"})
 ```js
 getSlidesForTableRows(arrRows, opt, presLayout, slideLayout).forEach(function (slide, idx) {
 ...
-            if (idx > 0)
                 opt.y = inch2Emu(opt.autoPageSlideStartY || opt.newSlideStartY || arrTableMargin[0]);
 ...
 });
