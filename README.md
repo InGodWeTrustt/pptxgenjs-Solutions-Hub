@@ -18,6 +18,14 @@ let slide = pptx.addSlide({masterName: "TEST"})
 
 # пояснение
 
+Оператор логического или (**||**) вычисляется *слева направо*, делает возможным сокращенное вычисление, возвращая **первое** правдоподобное выражение, игнорируя все остальные вычисление.
+Например,
+```js
+o1 = true || true; // t || t вернёт true
+o2 = false || true; // f || t вернёт true
+```
+
+Пример кода из библиотеки *pptxgenjs* файла *pptxgen.cjs.js*:
 ```js
 getSlidesForTableRows(arrRows, opt, presLayout, slideLayout).forEach(function (slide, idx) {
 ...
@@ -25,6 +33,7 @@ getSlidesForTableRows(arrRows, opt, presLayout, slideLayout).forEach(function (s
 ...
 });
 ```
+Так как autoPageSlideStartY = 0, а newSlideStartY = undefined (так как оно не имеет значение)
 
 ## Проблема 2. 
  Стоит задача в том, чтобы логика работы определенной функции при включенной опции **autopage:true** работала немного иначе, а именно: переносила всю строку на следующий слайд.
