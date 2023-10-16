@@ -18,7 +18,14 @@ let slide = pptx.addSlide({masterName: "TEST"})
 
 # пояснение
 
-f dvfdfvd
+```js
+getSlidesForTableRows(arrRows, opt, presLayout, slideLayout).forEach(function (slide, idx) {
+...
+            if (idx > 0)
+                opt.y = inch2Emu(opt.autoPageSlideStartY || opt.newSlideStartY || arrTableMargin[0]);
+...
+});
+```
 
 ## Проблема 2. 
  Стоит задача в том, чтобы логика работы определенной функции при включенной опции **autopage:true** работала немного иначе, а именно: переносила всю строку на следующий слайд.
