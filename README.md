@@ -18,12 +18,19 @@ let slide = pptx.addSlide({masterName: "TEST"})
 
 # пояснение
 
-Оператор логического или (**||**) вычисляется *слева направо*, делает возможным сокращенное вычисление, возвращая **первое** правдоподобное выражение, игнорируя все остальные вычисление.
+Оператор логического или (**||**) вычисляется *слева направо*, делая возможным сокращенное вычисление логического выражения, возвращая при этом **первое** правдоподобное, игнорируя все остальные за ним выражения.
 Например,
 ```js
 o1 = true || true; // t || t вернёт true
 o2 = false || true; // f || t вернёт true
 ```
+Примеры выражений, которые могут быть преобразованы в false ([ссылка на источник](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Logical_OR)):
+
+null;
+NaN;
+0;
+пустая строка ("", '', ``);
+undefined.
 
 Пример кода из библиотеки *pptxgenjs* файла *pptxgen.cjs.js*:
 ```js
@@ -33,7 +40,9 @@ getSlidesForTableRows(arrRows, opt, presLayout, slideLayout).forEach(function (s
 ...
 });
 ```
-Так как autoPageSlideStartY = 0, а newSlideStartY = undefined (так как оно не имеет значение)
+Так как autoPageSlideStartY = 0, а newSlideStartY = undefined (так как оно не имеет значение), Javascript трактует его как
+false || false || true (arrTableMargin[0] имеет значение).
+В итоге opt.y = inch2Emu(arrTableMargin[0])
 
 ## Проблема 2. 
  Стоит задача в том, чтобы логика работы определенной функции при включенной опции **autopage:true** работала немного иначе, а именно: переносила всю строку на следующий слайд.
